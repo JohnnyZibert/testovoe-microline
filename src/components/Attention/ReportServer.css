@@ -1,0 +1,15 @@
+.Warn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FEFBEA;
+    color: #edce90;
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+.iconContainer{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}

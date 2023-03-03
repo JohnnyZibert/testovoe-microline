@@ -1,0 +1,17 @@
+.numberOfClicks{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    background: #E5F6FD;
+    color: #4F6E98;
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.iconContainer{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
