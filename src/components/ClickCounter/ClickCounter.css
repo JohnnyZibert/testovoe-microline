@@ -1,4 +1,4 @@
-.numberOfClicks{
+.number_clicks{
     display: flex;
     align-items: center;
     justify-content: start;
@@ -10,7 +10,7 @@
     margin-bottom: 15px;
 }
 
-.iconContainer{
+.icon-container{
     display: flex;
     align-items: center;
     margin-right: 10px;

@@ -1,23 +1,25 @@
-import React, {ReactNode} from 'react';
-import {declension} from "../helpers/declension";
-import './ClickCounter.css'
-
+import React, { memo } from 'react';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import { declension } from '../helpers/declension';
+import './ClickCounter.css';
 
 export interface ClickCounterProps {
-    icon:ReactNode
-    text: string
-    className:string
     quantityClicks: number
 }
 
-
-export const ClickCounter = (props: ClickCounterProps) => {
-    const {icon, text, className, quantityClicks} = props
-    const declensionTime = declension(quantityClicks, ['раз', 'раза','раз'])
+export const ClickCounter = memo((props: ClickCounterProps) => {
+    const {
+        quantityClicks,
+    } = props;
+    const declensionTime = declension(quantityClicks, ['раз', 'раза', 'раз']);
     return (
-        <div className={className}>
-            <div className='iconContainer'>{icon}</div>
-            <span>{text} {quantityClicks} {declensionTime}</span>
+        <div className="number_clicks">
+            <div className="icon-container">
+                <InfoOutlinedIcon sx={{ color: '#35a1db' }} />
+            </div>
+            <span>
+                {`Кликнули ${quantityClicks} ${declensionTime}`}
+            </span>
         </div>
     );
-};
+});

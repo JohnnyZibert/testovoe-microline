@@ -1,4 +1,4 @@
-.Warn{
+.clicks_fromServer{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,7 +8,7 @@
     padding: 10px 10px;
     border-radius: 5px;
 }
-.iconContainer{
+.icon_container{
     display: flex;
     align-items: center;
     margin-right: 10px;
