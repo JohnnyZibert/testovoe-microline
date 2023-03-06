@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/testovoe-microline/static/css/main.da9ed48a.css",
+    "main.js": "/testovoe-microline/static/js/main.1e623b06.js",
+    "index.html": "/testovoe-microline/index.html",
+    "main.da9ed48a.css.map": "/testovoe-microline/static/css/main.da9ed48a.css.map",
+    "main.1e623b06.js.map": "/testovoe-microline/static/js/main.1e623b06.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.da9ed48a.css",
+    "static/js/main.1e623b06.js"
+  ]
+}
