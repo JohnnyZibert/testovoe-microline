@@ -9,7 +9,17 @@
 .content{
   max-width: 300px;
   border-right: 1px solid #E9E9E9;
-  border-bottom: 1px solid #ECA5A5;
   box-shadow: 5px 0 0 #F0F0F0;
   padding: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+.linea{
+  background: #ECA5A5;
+  height: 1px;
+  width: 80%;
+  position: absolute;
+  bottom: 0;
 }

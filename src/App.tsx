@@ -28,11 +28,11 @@ function App() {
                 <ClickCounter
                     quantityClicks={quantityClicks || 0}
                 />
-
                 <ClicksFromServ
                     quantityClicks={clicksOfServer}
                     error={error}
                 />
+                <div className="linea" />
             </div>
         </div>
     );
