@@ -5,43 +5,54 @@ import { instance } from '../api/instance';
 interface IStateData {
     data: number
     error: string
+    isLoading: boolean
 }
 
 export const useFetch = (url: string, count: number) => {
     const [fetchedData, setFetchData] = useState<IStateData>({
         data: 0,
         error: '',
+        isLoading: false,
     });
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [fetchTimer, setFetchTimer] = useState(false);
+
     const fetchData = useCallback(async () => {
         try {
-            setIsLoading(true);
-            const response = await instance.post(url, { count });
-            const data = await response.data;
-            if (data) {
-                setFetchData({
-                    data: data.count,
-                    error: '',
-                });
+            if (!fetchTimer) {
+                setFetchData({ ...fetchedData, isLoading: true });
+
+                const response = await instance.post(url, { count: count + 1 });
+
+                const data = await response.data;
+
+                if (data) {
+                    setFetchData({
+                        data: data.count,
+                        error: '',
+                        isLoading: false,
+                    });
+                }
+                setFetchTimer(true);
+
+                setTimeout(() => {
+                    setFetchTimer(false);
+                }, 1000);
             }
-            setIsLoading(false);
         } catch (err) {
             if (axios.isCancel(err)) {
                 console.log(`Fetched data aborted ${err}`);
             } else {
                 console.log('error occurred', err);
             }
-            setIsLoading(false);
             setFetchData({
                 data: 0,
                 error: err.message,
+                isLoading: false,
             });
         }
-    }, [url, count]);
-
-    const { data, error } = fetchedData;
+    }, [fetchTimer, fetchedData, url, count]);
 
     return {
-        data, isLoading, error, fetchData,
+        ...fetchedData, fetchData,
     };
 };

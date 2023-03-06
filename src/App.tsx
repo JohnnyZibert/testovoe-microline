@@ -9,23 +9,14 @@ import { getCountUrl } from './api/instance';
 function App() {
     const [quantityClicks, setQuantityClicks] = useState<number>(0);
 
-    const [fetchTimer, setFetchTimer] = useState(false);
-
     const {
-        data: clicksOnServer, isLoading, error, fetchData,
+        data: clicksOfServer, isLoading, error, fetchData,
     } = useFetch(getCountUrl, quantityClicks);
 
     const onClickButton = useCallback(() => {
         setQuantityClicks((prev) => prev + 1);
-
-        if (!fetchTimer) {
-            fetchData();
-            setFetchTimer(true);
-            setTimeout(() => {
-                setFetchTimer(false);
-            }, 1000);
-        }
-    }, [fetchData, fetchTimer]);
+        fetchData();
+    }, [fetchData]);
 
     return (
         <div className="App">
@@ -39,7 +30,7 @@ function App() {
                 />
 
                 <ClicksFromServ
-                    quantityClicks={clicksOnServer}
+                    quantityClicks={clicksOfServer}
                     error={error}
                 />
             </div>
