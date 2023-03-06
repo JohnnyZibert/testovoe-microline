@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import WarningAmberOutlinedIcon from '@mui/icons-material/WarningAmberOutlined';
-import { declension } from '../helpers/declension';
+import { plural } from '../helpers/plural';
 import './ClicksFromServ.css';
 
 interface ClickCounterProps {
@@ -13,7 +13,7 @@ export const ClicksFromServ = memo((props: ClickCounterProps) => {
         quantityClicks, error,
     } = props;
 
-    const declensionTime = declension(quantityClicks, ['раз', 'раза', 'раз']);
+    const declensionTime = plural(quantityClicks, ['раз', 'раза', 'раз']);
 
     return (
         <div className="clicks_fromServer">
