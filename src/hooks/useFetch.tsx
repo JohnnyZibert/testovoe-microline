@@ -1,6 +1,10 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { instance } from '../api/instance';
+
+interface IResponse {
+    count: number
+}
 
 interface IStateData {
     data: number
@@ -14,14 +18,14 @@ export const useFetch = (url: string, count: number) => {
         error: '',
         isLoading: false,
     });
-    const [fetchTimer, setFetchTimer] = useState(false);
+    const [fetchTimer, setFetchTimer] = useState<boolean>(false);
 
-    const fetchData = useCallback(async () => {
+    const fetchData = async () => {
         try {
             if (!fetchTimer) {
                 setFetchData({ ...fetchedData, isLoading: true });
 
-                const response = await instance.post(url, { count: count + 1 });
+                const response = await instance.post<IResponse>(url, { count: count + 1 });
 
                 const data = await response.data;
 
@@ -50,7 +54,7 @@ export const useFetch = (url: string, count: number) => {
                 isLoading: false,
             });
         }
-    }, [fetchTimer, fetchedData, url, count]);
+    };
 
     return {
         ...fetchedData, fetchData,
